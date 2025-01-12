@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import FancyText from '@carefully-coded/react-text-gradient';
 import Logo from "../../assets/favicon.svg"
+import LoginModal from '../LoginModal/LoginModal';
+import RegisterModal from '../RegisterModal/RegisterModal';
 const NavBar = () => {
+
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+    // Function to handle opening and closing the modal
+    const handleToggleModal = () => {
+        setIsModalOpen(!isModalOpen)
+    };  
+    const handleRegisterToggleModal = () => {
+        setIsRegisterModalOpen(!isRegisterModalOpen)
+    };
+
+
+
+
+
     return (
         <div className='shadow-md rounded-lg p-2'>
  <div className="navbar bg-base-100 ">
@@ -18,8 +37,8 @@ const NavBar = () => {
         </div>
         <div className="flex-none">
           <div className="flex gap-4">
-          <NavLink className="bg-gray-200 px-4 py-2 rounded-md text-xl font-semibold hover:text-white hover:bg-[#6DEDD0] transition duration-300 ease-in-out" to="/login" > Log In</NavLink> 
-          <NavLink className="bg-gray-200 px-4 py-2 rounded-md text-xl font-semibold hover:text-white hover:bg-[#6DEDD0] transition duration-300 ease-in-out" to="/register" > Register</NavLink> 
+          <p  onClick={handleToggleModal} className="bg-gray-200 px-4 cursor-pointer py-2 rounded-md text-xl font-semibold hover:text-white hover:bg-[#6DEDD0] transition duration-300 ease-in-out"  > Log In</p> 
+          <p onClick={handleRegisterToggleModal} className="bg-gray-200 px-4 cursor-pointer py-2 rounded-md text-xl font-semibold hover:text-white hover:bg-[#6DEDD0] transition duration-300 ease-in-out"  > Register</p> 
           </div>
           <div className="dropdown dropdown-end px-3">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -37,14 +56,16 @@ const NavBar = () => {
                   Profile
                  
                 </a>
-              </li>
-              <li><a>Settings</a></li>
+              </li> 
               <li><a>Logout</a></li>
             </ul>
           </div>
         </div>
       </div>
-        
+      {isModalOpen && <LoginModal isOpen={isModalOpen} handleToggleModal={handleToggleModal} />}
+
+
+      {isRegisterModalOpen && <RegisterModal isOpen={isRegisterModalOpen} handleRegisterToggleModal={handleRegisterToggleModal} />}
         <div className='navbar'>
         <div className="flex items-center space-x-4 w-full px-6">
   {/* Search Box with Icon and Button */}
