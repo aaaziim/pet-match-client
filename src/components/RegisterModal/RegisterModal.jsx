@@ -86,14 +86,7 @@ const RegisterModal = ({ isOpen, handleRegisterToggleModal }) => {
                                     />
                                 </div>
 
-                                <div className="transition duration-300 ease-in-out transform hover:scale-105">
-                                    <button
-                                        type="submit"
-                                        className="w-full py-3 bg-teal-500 text-white text-lg rounded-lg font-semibold hover:bg-teal-600 transition transform duration-300 ease-in-out"
-                                    >
-                                        Register
-                                    </button>
-                                </div>
+                              
                             </form>
 
                             <div className="mt-4 text-center">
